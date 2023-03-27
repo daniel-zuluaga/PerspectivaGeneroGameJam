@@ -10,6 +10,6 @@ public class TeRobaronCanvas : MonoBehaviour
     private void Update()
     {
         pointsRobadosValue.color = Color.red;
-        pointsRobadosValue.text = RunnerManager.instanceRunnerManager.point.ToString();
+        pointsRobadosValue.text = RunnerManager.instanceRunnerManager.pointPlayer.ToString();
     }
 }
