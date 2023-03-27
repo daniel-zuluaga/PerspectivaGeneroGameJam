@@ -50,6 +50,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ganar
+    uniqueID: 2060397263
+    locked: 0
   - name: Player
     uniqueID: 913991367
     locked: 0

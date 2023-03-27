@@ -23,5 +23,6 @@ public class RunnerManager : MonoBehaviour
     private void Update()
     {
         textPoint.text = "Points: " + point.ToString();
+        PlayerPrefs.SetFloat("PlataRecogida", point);
     }
 }

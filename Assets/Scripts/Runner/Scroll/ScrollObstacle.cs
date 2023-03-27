@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScrollObstacle : MonoBehaviour
 {
     [SerializeField] private float scrollSpeed = 4f;
+    [SerializeField] private ScrollGanar gameObjectGanar;
 
     public float waitIncrementoSpeed;
 
@@ -12,10 +13,10 @@ public class ScrollObstacle : MonoBehaviour
 
     void Update()
     {
-        if (!MovePlayerRunner.instanceMovePlayer.TeRobaron && !GameManager.instanceGameManager.ganaste)
+        if (!MovePlayerRunner.instanceMovePlayer.TeRobaron || !GameManager.instanceGameManager.ganaste && !MovePlayerRunner.instanceMovePlayer.scrollGanar.notMove)
         {
-            Aumentarvelocidad();
             transform.Translate(Vector2.left * scrollSpeed * Time.deltaTime);
+            Aumentarvelocidad();
         }
     }
 

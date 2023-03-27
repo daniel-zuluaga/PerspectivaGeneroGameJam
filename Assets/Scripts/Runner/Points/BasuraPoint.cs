@@ -8,7 +8,10 @@ public class BasuraPoint : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            RunnerManager.instanceRunnerManager.point += 1;
+            if (!MovePlayerRunner.instanceMovePlayer.TeRobaron && !GameManager.instanceGameManager.ganaste)
+            {
+                RunnerManager.instanceRunnerManager.point += 1;
+            }
             Destroy(gameObject);
         }
     }

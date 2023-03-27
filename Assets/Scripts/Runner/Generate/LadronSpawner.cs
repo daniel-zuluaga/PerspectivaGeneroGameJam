@@ -9,43 +9,51 @@ public class LadronSpawner : MonoBehaviour
     [SerializeField] private float waitTimeCreateLadron = 2f;
 
     [SerializeField] private float waitTimeGanar = 60f;
+    [SerializeField] private bool createObjGanar = false;
 
     private void Start()
     {
-        if (MovePlayerRunner.instanceMovePlayer.TeRobaron && GameManager.instanceGameManager.ganaste)
-        {
-            return;
-        }
-        if (waitTimeGanar > 0)
+        if (waitTimeGanar > 0 && !createObjGanar)
         {
             StartCoroutine(SpawnObstacle());
         }
-        else if(waitTimeGanar <= 0)
-        {
-            GanerateGanar();
-        }
-        return;
+        ganarObj.SetActive(false);
     }
 
     private void Update()
     {
+        if (MovePlayerRunner.instanceMovePlayer.TeRobaron || GameManager.instanceGameManager.ganaste || createObjGanar)
+        {
+            return;
+        }
+
         waitTimeGanar -= Time.deltaTime;
+
+        if(waitTimeGanar <= 0)
+        {
+            createObjGanar = true;
+        }
+
+        if (createObjGanar)
+        {
+            GanerateGanar();
+            return;
+        }
     }
 
     public void GanerateGanar()
     {
-        GameManager.instanceGameManager.ganaste = true;
-        Instantiate(ganarObj, transform.position, Quaternion.identity);
+        if(!MovePlayerRunner.instanceMovePlayer.TeRobaron && !GameManager.instanceGameManager.ganaste)
+        {
+            GameManager.instanceGameManager.ganaste = true;
+            ganarObj.SetActive(true);
+            ganarObj.transform.position = transform.position;
+        }
     }
 
     private IEnumerator SpawnObstacle()
     {
-        if(MovePlayerRunner.instanceMovePlayer.TeRobaron && GameManager.instanceGameManager.ganaste)
-        {
-            yield return new WaitForSeconds(.5f);
-        }
-
-        while (true)
+        while (!MovePlayerRunner.instanceMovePlayer.TeRobaron && !GameManager.instanceGameManager.ganaste)
         {
             Instantiate(ladronObstacle, transform.position, Quaternion.identity);
             yield return new WaitForSeconds(waitTimeCreateLadron);
