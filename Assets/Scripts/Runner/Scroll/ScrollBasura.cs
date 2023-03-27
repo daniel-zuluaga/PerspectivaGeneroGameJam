@@ -8,7 +8,7 @@ public class ScrollBasura : MonoBehaviour
 
     void Update()
     {
-        if (!MovePlayerRunner.instanceMovePlayer.TeRobaron && !GameManager.instanceGameManager.ganaste)
+        if (!MovePlayerRunner.instanceMovePlayer.TeRobaron || !GameManager.instanceGameManager.ganaste && !MovePlayerRunner.instanceMovePlayer.scrollGanar.notMove)
         {
             transform.Translate(Vector2.left * scrollSpeed * Time.deltaTime);
         }

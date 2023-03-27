@@ -16,6 +16,8 @@ public class MovePlayerRunner : MonoBehaviour
     public float esperarAumentarVelocidad;
     public GameObject canvasOver;
     public Rigidbody2D rb2D;
+    public ScrollGanar scrollGanar;
+    public GameObject generarLadron;
 
     private void Awake()
     {
@@ -52,6 +54,8 @@ public class MovePlayerRunner : MonoBehaviour
     {
         if (collision.collider.CompareTag("Ladron"))
         {
+            generarLadron.GetComponent<BoxCollider2D>().enabled = false;
+            scrollGanar.notMove = true;
             TeRobaron = true;
             canvasOver.SetActive(true);
         }
