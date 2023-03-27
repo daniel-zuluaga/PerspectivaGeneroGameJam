@@ -11,19 +11,19 @@ public class ScrollObstacle : MonoBehaviour
 
     public float esperarAumentarVelocidad;
 
-    void Update()
+    void FixedUpdate()
     {
         if (!MovePlayerRunner.instanceMovePlayer.TeRobaron || !GameManager.instanceGameManager.ganaste && !MovePlayerRunner.instanceMovePlayer.scrollGanar.notMove)
         {
-            transform.Translate(Vector2.left * scrollSpeed * Time.deltaTime);
             Aumentarvelocidad();
+            transform.Translate(Vector2.left * scrollSpeed * Time.deltaTime);
         }
     }
 
     public void Aumentarvelocidad()
     {
         esperarAumentarVelocidad -= Time.deltaTime;
-        if (esperarAumentarVelocidad < 0)
+        if (esperarAumentarVelocidad <= 0)
         {
             scrollSpeed += 1f;
             esperarAumentarVelocidad = waitIncrementoSpeed;

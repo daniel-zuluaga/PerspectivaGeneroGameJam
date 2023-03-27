@@ -5,12 +5,18 @@ using UnityEngine;
 
 public class GanasteCanvas : MonoBehaviour
 {
-    public TextMeshProUGUI pointsGanadosText;
+    public TextMeshProUGUI pointsRobadosValue;
+    public bool addData = false;
 
     private void Update()
     {
-        pointsGanadosText.color = Color.green;
-        pointsGanadosText.text = RunnerManager.instanceRunnerManager.point.ToString();
-        GameManager.instanceGameManager.AddPoint(RunnerManager.instanceRunnerManager.point);
+        pointsRobadosValue.color = Color.green;
+        pointsRobadosValue.text = RunnerManager.instanceRunnerManager.pointPlayer.ToString();
+
+        if (!addData)
+        {
+            UIManager.instanceRunnerManager.AddPoint(RunnerManager.instanceRunnerManager.pointPlayer);
+            addData = true;
+        }
     }
 }

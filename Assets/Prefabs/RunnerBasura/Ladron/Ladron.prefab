@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d22ff2735f791445c8f184af0b839417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 5.5
+  scrollSpeed: 6
   gameObjectGanar: {fileID: 7446829764375669469, guid: 3f0682726bebf421da708012daa673ac, type: 3}
   waitIncrementoSpeed: 3
   esperarAumentarVelocidad: 3
