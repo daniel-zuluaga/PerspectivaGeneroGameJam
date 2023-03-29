@@ -6,6 +6,7 @@ public class ScrollObstacle : MonoBehaviour
 {
     [SerializeField] private float scrollSpeed = 4f;
     [SerializeField] private ScrollGanar gameObjectGanar;
+    [SerializeField] private float incrementarSpeed;
 
     public float waitIncrementoSpeed;
 
@@ -13,10 +14,13 @@ public class ScrollObstacle : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!MovePlayerRunner.instanceMovePlayer.TeRobaron || !GameManager.instanceGameManager.ganaste && !MovePlayerRunner.instanceMovePlayer.scrollGanar.notMove)
+        if (!MovePlayerRunner.instanceMovePlayer.notMovePlayer)
         {
-            Aumentarvelocidad();
-            transform.Translate(Vector2.left * scrollSpeed * Time.deltaTime);
+            if (!MovePlayerRunner.instanceMovePlayer.TeRobaron || !GameManager.instanceGameManager.ganaste && !MovePlayerRunner.instanceMovePlayer.scrollGanar.notMove)
+            {
+                Aumentarvelocidad();
+                transform.Translate(Vector2.left * scrollSpeed * Time.fixedDeltaTime);
+            }
         }
     }
 
@@ -25,7 +29,7 @@ public class ScrollObstacle : MonoBehaviour
         esperarAumentarVelocidad -= Time.deltaTime;
         if (esperarAumentarVelocidad <= 0)
         {
-            scrollSpeed += 1f;
+            scrollSpeed += incrementarSpeed;
             esperarAumentarVelocidad = waitIncrementoSpeed;
         }
     }

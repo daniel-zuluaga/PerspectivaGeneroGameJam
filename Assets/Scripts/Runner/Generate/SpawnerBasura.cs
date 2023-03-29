@@ -4,28 +4,30 @@ using UnityEngine;
 
 public class SpawnerBasura : MonoBehaviour
 {
-    [SerializeField] private GameObject basuraObstacle;
+    [SerializeField] private GameObject[] basuraObstacle;
+    [SerializeField] private float curwaitTimeCreateBasura = 2f;
     [SerializeField] private float waitTimeCreateBasura = 2f;
 
-    private void Start()
+    private void FixedUpdate()
     {
-        StartCoroutine(SpawnObstacle());
-    }
-
-    private void Update()
-    {
-        if (MovePlayerRunner.instanceMovePlayer.TeRobaron || GameManager.instanceGameManager.ganaste)
+        if (!MovePlayerRunner.instanceMovePlayer.notMovePlayer)
         {
-            return;
+            curwaitTimeCreateBasura -= Time.fixedDeltaTime;
+            if(curwaitTimeCreateBasura <= 0)
+            {
+                StartCoroutine(SpawnObstacle());
+                curwaitTimeCreateBasura = waitTimeCreateBasura;
+            }
         }
     }
 
     private IEnumerator SpawnObstacle()
     {
-        while (!MovePlayerRunner.instanceMovePlayer.TeRobaron && !GameManager.instanceGameManager.ganaste)
+        if(!MovePlayerRunner.instanceMovePlayer.TeRobaron && !GameManager.instanceGameManager.ganaste)
         {
-            Instantiate(basuraObstacle, transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(waitTimeCreateBasura);
+            int basuraRandom = Random.Range(0, basuraObstacle.Length);
+            Instantiate(basuraObstacle[basuraRandom], transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(.2f);
         }
     }
 }

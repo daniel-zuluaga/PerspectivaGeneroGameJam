@@ -148,5 +148,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 6
   gameObjectGanar: {fileID: 7446829764375669469, guid: 3f0682726bebf421da708012daa673ac, type: 3}
-  waitIncrementoSpeed: 3
-  esperarAumentarVelocidad: 3
+  incrementarSpeed: 2.5
+  waitIncrementoSpeed: 1.5
+  esperarAumentarVelocidad: 1.5

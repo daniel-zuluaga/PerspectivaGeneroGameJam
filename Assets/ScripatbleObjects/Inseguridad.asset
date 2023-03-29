@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6692514ef8bd14369b609bf00303d771, type: 3}
-  m_Name: MoneyPlayer
+  m_Script: {fileID: 11500000, guid: 37e18849f9d6f43da9612ed018b4f6aa, type: 3}
+  m_Name: Inseguridad
   m_EditorClassIdentifier: 
-  moneyPlayer: 10
+  valueBarraObjetivo: 0

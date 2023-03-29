@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instanceGameManager;
 
     public bool ganaste = false;
+    public bool canMove = false;
 
     private void Awake()
     {

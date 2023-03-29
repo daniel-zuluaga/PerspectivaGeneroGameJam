@@ -15,7 +15,6 @@ public class GanasteCanvas : MonoBehaviour
 
         if (!addData)
         {
-            UIManager.instanceRunnerManager.AddPoint(RunnerManager.instanceRunnerManager.pointPlayer);
             addData = true;
         }
     }

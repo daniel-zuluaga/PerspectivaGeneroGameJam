@@ -6,11 +6,14 @@ public class ScrollBasura : MonoBehaviour
 {
     [SerializeField] private float scrollSpeed = 4f;
 
-    void Update()
+    void FixedUpdate()
     {
-        if (!MovePlayerRunner.instanceMovePlayer.TeRobaron || !GameManager.instanceGameManager.ganaste && !MovePlayerRunner.instanceMovePlayer.scrollGanar.notMove)
+        if (!MovePlayerRunner.instanceMovePlayer.notMovePlayer)
         {
-            transform.Translate(Vector2.left * scrollSpeed * Time.deltaTime);
+            if (!MovePlayerRunner.instanceMovePlayer.TeRobaron || !GameManager.instanceGameManager.ganaste && !MovePlayerRunner.instanceMovePlayer.scrollGanar.notMove)
+            {
+                transform.Translate(Vector2.left * scrollSpeed * Time.fixedDeltaTime);
+            }
         }
     }
 }
