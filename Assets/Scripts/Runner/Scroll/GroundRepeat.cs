@@ -10,20 +10,23 @@ public class GroundRepeat : MonoBehaviour
     void Start()
     {
         Transform transform = GetComponent<Transform>();
-        spriteWidth = transform.localScale.x;
+        spriteWidth = transform.gameObject.GetComponent<BoxCollider2D>().size.x;
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckTransformground();
+        if (!MovePlayerRunner.instanceMovePlayer.notMovePlayer)
+        {
+            CheckTransformground();
+        }
     }
 
     public void CheckTransformground()
     {
         if(transform.position.x < -spriteWidth)
         {
-            transform.Translate(Vector2.right * 2f * spriteWidth);
+            transform.Translate(Vector2.right * 2f * spriteWidth );
         }
     }
 }

@@ -7,9 +7,8 @@ TagManager:
   - Ground
   - Ladron
   - Basura
-  - Destructor
-  - Block
   - Ganaste
+  - Destructor
   layers:
   - Default
   - TransparentFX
@@ -47,6 +46,9 @@ TagManager:
   - name: BG
     uniqueID: 3050635977
     locked: 0
+  - name: Fondo
+    uniqueID: 322314257
+    locked: 0
   - name: Ground
     uniqueID: 3685417055
     locked: 0
@@ -57,5 +59,5 @@ TagManager:
     uniqueID: 2060397263
     locked: 0
   - name: Player
-    uniqueID: 913991367
+    uniqueID: 1759200915
     locked: 0
