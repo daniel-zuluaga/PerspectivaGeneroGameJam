@@ -9,7 +9,7 @@ public abstract class PersisteMoneyPlayer : ScriptableObject
     public void Save(string fileName = null)
     {
         var binaryFormater = new BinaryFormatter();
-        var file = File.Create(GetPath(fileName));
+        FileStream file = File.Create(GetPath(fileName));
         var json = JsonUtility.ToJson(this);
 
         binaryFormater.Serialize(file, json);
@@ -21,7 +21,7 @@ public abstract class PersisteMoneyPlayer : ScriptableObject
         if (File.Exists(GetPath(fileName)))
         {
             var binaryFor = new BinaryFormatter();
-            var file = File.Open(GetPath(fileName), FileMode.Open);
+            FileStream file = File.Open(GetPath(fileName), FileMode.Open);
 
             JsonUtility.FromJsonOverwrite((string)binaryFor.Deserialize(file), this);
             file.Close();
@@ -31,6 +31,6 @@ public abstract class PersisteMoneyPlayer : ScriptableObject
     public string GetPath(string fileName = null)
     {
         var fullFileName = string.IsNullOrEmpty(fileName) ? name : fileName;
-        return string.Format("{0}/{1}.dat", Application.persistentDataPath, fullFileName);
+        return string.Format("{0}/{1}.json", Application.persistentDataPath, fullFileName);
     }
 }

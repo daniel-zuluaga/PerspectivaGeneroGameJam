@@ -6,6 +6,7 @@ public class LadronSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject ladronObstacle;
     [SerializeField] private GameObject ganarObj;
+    [SerializeField] private float curWaitTimeCreateLadron = 2f;
     [SerializeField] private float waitTimeCreateLadron = 2f;
 
     [SerializeField] private float waitTimeGanar = 60f;
@@ -13,31 +14,37 @@ public class LadronSpawner : MonoBehaviour
 
     private void Start()
     {
-        if (waitTimeGanar > 0 && !createObjGanar)
-        {
-            StartCoroutine(SpawnObstacle());
-        }
         ganarObj.SetActive(false);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (MovePlayerRunner.instanceMovePlayer.TeRobaron || GameManager.instanceGameManager.ganaste || createObjGanar)
+        if (MovePlayerRunner.instanceMovePlayer.TeRobaron || GameManager.instanceGameManager.ganaste || createObjGanar || MovePlayerRunner.instanceMovePlayer.scrollGanar.notMove)
         {
             return;
         }
 
-        waitTimeGanar -= Time.deltaTime;
-
-        if(waitTimeGanar <= 0)
+        if (!MovePlayerRunner.instanceMovePlayer.notMovePlayer)
         {
-            createObjGanar = true;
-        }
+            waitTimeGanar -= Time.fixedDeltaTime;
+            curWaitTimeCreateLadron -= Time.fixedDeltaTime;
 
-        if (createObjGanar)
-        {
-            GanerateGanar();
-            return;
+            if(curWaitTimeCreateLadron <= 0 && waitTimeGanar > 0 && !createObjGanar)
+            {
+                StartCoroutine(SpawnObstacle());
+                curWaitTimeCreateLadron = waitTimeCreateLadron;
+            }
+
+            if (waitTimeGanar <= 0)
+            {
+                createObjGanar = true;
+            }
+
+            if (createObjGanar)
+            {
+                GanerateGanar();
+                return;
+            }
         }
     }
 
@@ -53,10 +60,10 @@ public class LadronSpawner : MonoBehaviour
 
     private IEnumerator SpawnObstacle()
     {
-        while (!MovePlayerRunner.instanceMovePlayer.TeRobaron && !GameManager.instanceGameManager.ganaste)
+        if(!MovePlayerRunner.instanceMovePlayer.TeRobaron && !GameManager.instanceGameManager.ganaste)
         {
             Instantiate(ladronObstacle, transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(waitTimeCreateLadron);
+            yield return new WaitForSeconds(.2f);
         }
     }
 

@@ -18,6 +18,7 @@ public class MovePlayerRunner : MonoBehaviour
     public Rigidbody2D rb2D;
     public ScrollGanar scrollGanar;
     public GameObject generarLadron;
+    public bool notMovePlayer;
 
     private void Awake()
     {
@@ -32,7 +33,7 @@ public class MovePlayerRunner : MonoBehaviour
 
     private void Update()
     {
-        if (!TeRobaron)
+        if (!TeRobaron && !notMovePlayer)
         {
             if (canJump == true)
             {

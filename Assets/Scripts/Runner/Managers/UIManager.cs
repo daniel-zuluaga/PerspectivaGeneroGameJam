@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instanceRunnerManager;
 
-    public MoneyPlayer pointPlayer;
+    public InfoPlayer pointPlayer;
     public TextMeshProUGUI textPoint;
 
     private void Awake()
