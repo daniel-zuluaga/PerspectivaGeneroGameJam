@@ -1552,7 +1552,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1375597194
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1911,7 +1911,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a90f4ae0b111f4aaa8f9171c9c6a0a98, type: 2}
   - {fileID: 11400000, guid: 45cba6f2363a542eab22cd21d886347c, type: 2}
   - {fileID: 11400000, guid: fbeefaadad4ad470e98d7e3b7f10118c, type: 2}
-  archivoguardado: 
 --- !u!4 &1905150679
 Transform:
   m_ObjectHideFlags: 0
@@ -1937,7 +1936,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2100118927}
   m_Layer: 5
-  m_Name: House (1)
+  m_Name: Guardaria
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

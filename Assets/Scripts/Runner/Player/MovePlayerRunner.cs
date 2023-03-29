@@ -6,7 +6,7 @@ public class MovePlayerRunner : MonoBehaviour
 {
     public static MovePlayerRunner instanceMovePlayer;
 
-    [Header("Player Run")]
+    [Header("Player Jump")]
     public float jumpForce;
     public float cancelForceJump;
     public bool canJump;
