@@ -18,7 +18,7 @@ public class LevelStarter : MonoBehaviour
     IEnumerator CountSequence()
     {
         MovePlayerRunner.instanceMovePlayer.notMovePlayer = true;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         ThreeCountDown.SetActive(true);
         yield return new WaitForSeconds(1f);
         ThreeCountDown.SetActive(false);

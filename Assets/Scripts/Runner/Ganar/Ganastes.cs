@@ -5,10 +5,7 @@ using UnityEngine;
 public class Ganastes : MonoBehaviour
 {
     public GameObject canvasGanador;
-    public Objetivos objetivoSeguridadSuma;
-    public Objetivos objetivoRestaInseguridad;
-    private float pointSumarORestar = 10;
-    public bool addData = false;
+    public InfoPlayer infoPlayer;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -17,19 +14,7 @@ public class Ganastes : MonoBehaviour
             gameObject.GetComponent<ScrollGanar>().notMove = true;
             canvasGanador.SetActive(true);
             UIManager.instanceRunnerManager.AddPoint(RunnerManager.instanceRunnerManager.pointPlayer);
-            if (!addData)
-            {
-                addData = true;
-                if (objetivoRestaInseguridad.valueBarraObjetivo < pointSumarORestar)
-                {
-                    objetivoRestaInseguridad.valueBarraObjetivo = 0;
-                }
-                else
-                {
-                    objetivoRestaInseguridad.valueBarraObjetivo -= pointSumarORestar;
-                }
-                objetivoSeguridadSuma.valueBarraObjetivo += 10;
-            }
+            infoPlayer.yaGanastesRunner = true;
         }
         else
         {

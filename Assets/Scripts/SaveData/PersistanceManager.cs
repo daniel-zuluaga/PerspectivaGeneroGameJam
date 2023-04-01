@@ -5,23 +5,51 @@ using System.IO;
 
 public class PersistanceManager : MonoBehaviour
 {
-    public List<PersisteMoneyPlayer> saveObject;
+    private const string fileName = "infoPlayer.data";
+
+    public InfoPlayer saveObject;
+
+    private float curTimeSave = 1f;
 
     private void OnEnable()
     {
-        for (int i = 0; i < saveObject.Count; i++)
-        {
-            var saveObj = saveObject[i];
-            saveObj.Load();
-        }
+        Load();
+        Save();
     }
 
     private void OnDisable()
     {
-        for (int i = 0; i < saveObject.Count; i++)
+        Save();
+    }
+
+    private void Update()
+    {
+        curTimeSave -= Time.deltaTime;
+        if (curTimeSave <= 0)
         {
-            var saveObj = saveObject[i];
-            saveObj.Save();
+            Save();
+            curTimeSave = 2.5f;
         }
+    }
+
+    public void Save()
+    {
+        string playerInfoJson = JsonUtility.ToJson(saveObject);
+        string path = Path.Combine(Application.persistentDataPath, fileName);
+        File.WriteAllText(path, playerInfoJson);
+        Debug.Log(playerInfoJson);
+        Debug.Log(path);
+    }
+
+    public void Load()
+    {
+        string path = Path.Combine(Application.persistentDataPath, fileName);
+
+        string playerInfojson = File.ReadAllText(path);
+
+        InfoPlayer playerInfo = JsonUtility.FromJson<InfoPlayer>(playerInfojson);
+
+        saveObject.moneyPlayer = playerInfo.moneyPlayer;
+        saveObject.yaComproProducto = playerInfo.yaComproProducto;
     }
 }
