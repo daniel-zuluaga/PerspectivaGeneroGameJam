@@ -19,7 +19,7 @@ public class LadronSpawner : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (MovePlayerRunner.instanceMovePlayer.TeRobaron || GameManager.instanceGameManager.ganaste || createObjGanar || MovePlayerRunner.instanceMovePlayer.scrollGanar.notMove)
+        if (MovePlayerRunner.instanceMovePlayer.chocasCarpincho || GameManager.instanceGameManager.ganaste || createObjGanar || MovePlayerRunner.instanceMovePlayer.scrollGanar.notMove)
         {
             return;
         }
@@ -50,7 +50,7 @@ public class LadronSpawner : MonoBehaviour
 
     public void GanerateGanar()
     {
-        if(!MovePlayerRunner.instanceMovePlayer.TeRobaron && !GameManager.instanceGameManager.ganaste)
+        if(!MovePlayerRunner.instanceMovePlayer.chocasCarpincho && !GameManager.instanceGameManager.ganaste)
         {
             GameManager.instanceGameManager.ganaste = true;
             ganarObj.SetActive(true);
@@ -60,7 +60,7 @@ public class LadronSpawner : MonoBehaviour
 
     private IEnumerator SpawnObstacle()
     {
-        if(!MovePlayerRunner.instanceMovePlayer.TeRobaron && !GameManager.instanceGameManager.ganaste)
+        if(!MovePlayerRunner.instanceMovePlayer.chocasCarpincho && !GameManager.instanceGameManager.ganaste)
         {
             Instantiate(ladronObstacle, transform.position, Quaternion.identity);
             yield return new WaitForSeconds(.2f);

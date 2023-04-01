@@ -10,7 +10,7 @@ public class BasuraPoint : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            if (!MovePlayerRunner.instanceMovePlayer.TeRobaron && !GameManager.instanceGameManager.ganaste)
+            if (!MovePlayerRunner.instanceMovePlayer.chocasCarpincho && !GameManager.instanceGameManager.ganaste)
             {
                 RunnerManager.instanceRunnerManager.AddPointsRecogidos(cantidadPuntos);
             }

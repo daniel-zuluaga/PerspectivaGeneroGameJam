@@ -16,7 +16,7 @@ public class ScrollObstacle : MonoBehaviour
     {
         if (!MovePlayerRunner.instanceMovePlayer.notMovePlayer)
         {
-            if (!MovePlayerRunner.instanceMovePlayer.TeRobaron || !GameManager.instanceGameManager.ganaste && !MovePlayerRunner.instanceMovePlayer.scrollGanar.notMove)
+            if (!MovePlayerRunner.instanceMovePlayer.chocasCarpincho || !GameManager.instanceGameManager.ganaste && !MovePlayerRunner.instanceMovePlayer.scrollGanar.notMove)
             {
                 Aumentarvelocidad();
                 transform.Translate(Vector2.left * scrollSpeed * Time.fixedDeltaTime);

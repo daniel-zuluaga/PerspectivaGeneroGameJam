@@ -9,7 +9,7 @@ public class ScrollGanar : MonoBehaviour
 
     void Update()
     {
-        if (!MovePlayerRunner.instanceMovePlayer.TeRobaron && !GameManager.instanceGameManager.ganaste || !notMove)
+        if (!MovePlayerRunner.instanceMovePlayer.chocasCarpincho && !GameManager.instanceGameManager.ganaste || !notMove)
         {
             transform.Translate(Vector2.left * scrollSpeed * Time.deltaTime);
         }

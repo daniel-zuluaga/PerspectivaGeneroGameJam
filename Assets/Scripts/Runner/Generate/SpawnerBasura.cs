@@ -23,7 +23,7 @@ public class SpawnerBasura : MonoBehaviour
 
     private IEnumerator SpawnObstacle()
     {
-        if(!MovePlayerRunner.instanceMovePlayer.TeRobaron && !GameManager.instanceGameManager.ganaste)
+        if(!MovePlayerRunner.instanceMovePlayer.chocasCarpincho && !GameManager.instanceGameManager.ganaste)
         {
             int basuraRandom = Random.Range(0, basuraObstacle.Length);
             Instantiate(basuraObstacle[basuraRandom], transform.position, Quaternion.identity);

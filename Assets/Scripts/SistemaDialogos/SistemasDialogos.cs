@@ -21,19 +21,16 @@ public class SistemasDialogos : MonoBehaviour
         StartDialogue();
     }
 
-    private void Update()
+    public void PasarSiguienteLinea()
     {
-        if (Input.GetMouseButtonDown(0))
+        if(dialogueText.text == lines[index])
         {
-            if(dialogueText.text == lines[index])
-            {
-                NextLines();
-            }
-            else
-            {
-                StopAllCoroutines();
-                dialogueText.text = lines[index];
-            }
+            NextLines();
+        }
+        else
+        {
+            StopAllCoroutines();
+            dialogueText.text = lines[index];
         }
     }
 
