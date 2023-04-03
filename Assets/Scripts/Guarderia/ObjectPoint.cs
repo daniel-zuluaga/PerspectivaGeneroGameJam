@@ -11,6 +11,7 @@ public class ObjectPoint : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             Destroy(gameObject);
+            audioManager.instanceAudioManager.audioSourceCoin.Play();
             GuarderiaManager.instanceGuarderiaManager.AddPointsGuarderia(cantidadPuntos);
         }
 

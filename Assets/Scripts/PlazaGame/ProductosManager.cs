@@ -18,11 +18,26 @@ public class ProductosManager : MonoBehaviour
     public GameObject buttonCost;
     public GameObject imageIluminada;
     public GameObject objPadreProducto;
-    public AudioSource audioSourceBGIluminada;
+    public AudioSource audioSourceBG;
+
+    [Header("Audios Clip")]
+    public AudioClip audioClipPlazaOscura;
+    public AudioClip audioClipPlazaIluminada;
 
     private void Start()
     {
         textName.text = comprarProducto.nameProducto;
+
+        if (!moneyPlayerScripta.yaComproProducto)
+        {
+            audioSourceBG.clip = audioClipPlazaOscura;
+            audioSourceBG.Play();
+        }
+        else
+        {
+            audioSourceBG.clip = audioClipPlazaIluminada;
+            audioSourceBG.Play();
+        }
     }
 
     private void Update()
@@ -30,12 +45,11 @@ public class ProductosManager : MonoBehaviour
         textCost.text = "$ " + comprarProducto.costProducto.ToString();
         if (!moneyPlayerScripta.yaComproProducto)
         {
+
             VerficarCompraProducto();
         }
-
-        if (moneyPlayerScripta.yaComproProducto)
+        else
         {
-            audioSourceBGIluminada.Play();
             imageIluminada.SetActive(true);
             objPadreProducto.SetActive(false);
         }
@@ -64,7 +78,8 @@ public class ProductosManager : MonoBehaviour
             moneyPlayerScripta.moneyPlayer -= comprarProducto.costProducto;
             objPadreProducto.SetActive(false);
             imageIluminada.SetActive(true);
-            audioSourceBGIluminada.Play();
+            audioSourceBG.clip = audioClipPlazaIluminada;
+            audioSourceBG.Play();
         }
     }
 }

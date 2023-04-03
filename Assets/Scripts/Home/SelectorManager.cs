@@ -1,34 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SelectorManager : MonoBehaviour
 {
+    public string scenePlazaObscuraDialogo;
+    public string scenePlazaIluminadaDialogo;
     public InfoPlayer infoPlayer;
-    public Image imageChangeSprite;
-    public Button buttonPlayGuarderia;
 
-    public Sprite bloqueadoGuarderia;
-    public Sprite desbloqueadaGuarderia;
-
-    // Update is called once per frame
-    void Update()
+    public void VerificarSiMejoraLaPlaza()
     {
-        ValidateSiGanoRunner();
-    }
-
-    private void ValidateSiGanoRunner()
-    {
-        if (infoPlayer.yaGanastesRunner)
+        if (!infoPlayer.yaComproProducto)
         {
-            buttonPlayGuarderia.interactable = true;
-            imageChangeSprite.sprite = desbloqueadaGuarderia;
+            SceneManager.LoadScene(scenePlazaObscuraDialogo);
         }
         else
         {
-            buttonPlayGuarderia.interactable = false;
-            imageChangeSprite.sprite = bloqueadoGuarderia;
+            SceneManager.LoadScene(scenePlazaIluminadaDialogo);
         }
     }
 }

@@ -16,7 +16,7 @@ public class GuarderiaManager : MonoBehaviour
         instanceGuarderiaManager = this;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         textGuarderia.text = "Puntos: " + pointsGuarderia.ToString();
     }

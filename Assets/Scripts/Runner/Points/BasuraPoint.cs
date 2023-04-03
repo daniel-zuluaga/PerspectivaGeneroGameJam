@@ -10,6 +10,7 @@ public class BasuraPoint : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
+            audioManager.instanceAudioManager.audioSourceCoin.Play();
             if (!MovePlayerRunner.instanceMovePlayer.chocasCarpincho && !GameManager.instanceGameManager.ganaste)
             {
                 RunnerManager.instanceRunnerManager.AddPointsRecogidos(cantidadPuntos);

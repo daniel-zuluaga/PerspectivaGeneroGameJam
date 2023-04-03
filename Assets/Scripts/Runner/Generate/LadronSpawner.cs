@@ -19,6 +19,11 @@ public class LadronSpawner : MonoBehaviour
 
     private void FixedUpdate()
     {
+        VerificarSiGenera();
+    }
+
+    public void VerificarSiGenera()
+    {
         if (MovePlayerRunner.instanceMovePlayer.chocasCarpincho || GameManager.instanceGameManager.ganaste || createObjGanar || MovePlayerRunner.instanceMovePlayer.scrollGanar.notMove)
         {
             return;
@@ -29,7 +34,7 @@ public class LadronSpawner : MonoBehaviour
             waitTimeGanar -= Time.fixedDeltaTime;
             curWaitTimeCreateLadron -= Time.fixedDeltaTime;
 
-            if(curWaitTimeCreateLadron <= 0 && waitTimeGanar > 0 && !createObjGanar)
+            if (curWaitTimeCreateLadron <= 0 && waitTimeGanar > 0 && !createObjGanar)
             {
                 StartCoroutine(SpawnObstacle());
                 curWaitTimeCreateLadron = waitTimeCreateLadron;
@@ -52,7 +57,6 @@ public class LadronSpawner : MonoBehaviour
     {
         if(!MovePlayerRunner.instanceMovePlayer.chocasCarpincho && !GameManager.instanceGameManager.ganaste)
         {
-            GameManager.instanceGameManager.ganaste = true;
             ganarObj.SetActive(true);
             ganarObj.transform.position = transform.position;
         }
@@ -69,7 +73,7 @@ public class LadronSpawner : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Ladron"))
+        if (collision.CompareTag("Carpincho"))
         {
             Destroy(collision.gameObject);
         }
