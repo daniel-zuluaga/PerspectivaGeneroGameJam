@@ -9,27 +9,14 @@ public class PersistanceManager : MonoBehaviour
 
     public InfoPlayer saveObject;
 
-    private float curTimeSave = 1f;
-
     private void OnEnable()
     {
         Load();
-        Save();
     }
 
     private void OnDisable()
     {
         Save();
-    }
-
-    private void Update()
-    {
-        curTimeSave -= Time.deltaTime;
-        if (curTimeSave <= 0)
-        {
-            Save();
-            curTimeSave = 2.5f;
-        }
     }
 
     public void Save()
@@ -45,11 +32,14 @@ public class PersistanceManager : MonoBehaviour
     {
         string path = Path.Combine(Application.persistentDataPath, fileName);
 
-        string playerInfojson = File.ReadAllText(path);
+        if (File.Exists(path))
+        {
+            string playerInfojson = File.ReadAllText(path);
 
-        InfoPlayer playerInfo = JsonUtility.FromJson<InfoPlayer>(playerInfojson);
+            InfoPlayer playerInfo = JsonUtility.FromJson<InfoPlayer>(playerInfojson);
 
-        saveObject.moneyPlayer = playerInfo.moneyPlayer;
-        saveObject.yaComproProducto = playerInfo.yaComproProducto;
+            saveObject.moneyPlayer = playerInfo.moneyPlayer;
+            saveObject.yaComproProducto = playerInfo.yaComproProducto;
+        }
     }
 }

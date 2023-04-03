@@ -7,5 +7,4 @@ public class InfoPlayer : ScriptableObject
 {
     public int moneyPlayer;
     public bool yaComproProducto;
-    public bool yaGanastesRunner = false;
 }

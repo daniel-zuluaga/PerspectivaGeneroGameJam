@@ -21,6 +21,10 @@ public class MovePlayerRunner : MonoBehaviour
     public bool notMovePlayer;
     public bool canData = false;
 
+    public AudioSource audioSource;
+    public AudioSource audioSourceBGRunner;
+    public AudioSource audioSourceGameOver;
+
     public Animator anim;
 
     private void Awake()
@@ -58,6 +62,7 @@ public class MovePlayerRunner : MonoBehaviour
 
     public void Jump()
     {
+        audioSource.Play();
         anim.SetBool("isJumping", true);
         rb2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
@@ -66,6 +71,10 @@ public class MovePlayerRunner : MonoBehaviour
     {
         if (collision.collider.CompareTag("Carpincho"))
         {
+            audioSourceBGRunner.Stop();
+            audioSourceGameOver.Play();
+            rb2D.bodyType = RigidbodyType2D.Static;
+            collision.collider.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             generarLadron.GetComponent<BoxCollider2D>().enabled = false;
             scrollGanar.notMove = true;
             chocasCarpincho = true;

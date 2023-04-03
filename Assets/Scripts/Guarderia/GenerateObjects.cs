@@ -5,7 +5,7 @@ using UnityEngine;
 public class GenerateObjects : MonoBehaviour
 {
     [SerializeField] private GameObject[] ObjectsGuarderia;
-    [SerializeField] private Transform[] positionsObjects;
+    [SerializeField] private Vector3 spawnObjets;
     [SerializeField] private float curwaitTimeCreateObj = 2f;
     [SerializeField] private float waitTimeCreateObj = 2f;
 
@@ -28,10 +28,11 @@ public class GenerateObjects : MonoBehaviour
 
     private IEnumerator SpawnObstacle()
     {
-        int objectRandom = Random.Range(0, ObjectsGuarderia.Length);
-        int transformRandom = Random.Range(0, ObjectsGuarderia.Length);
+        Vector3 spawnPosition = new Vector3(Random.Range(-spawnObjets.x, spawnObjets.x), spawnObjets.y, spawnObjets.z);
 
-        Instantiate(ObjectsGuarderia[objectRandom], positionsObjects[transformRandom].position, Quaternion.identity);
+        int objectRandom = Random.Range(0, ObjectsGuarderia.Length);
+
+        Instantiate(ObjectsGuarderia[objectRandom], spawnPosition, Quaternion.identity);
         yield return new WaitForSeconds(.2f);
     }
 }

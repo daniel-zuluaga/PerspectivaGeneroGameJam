@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32cc0ab27eff46579893e415f6f1804, type: 3}
   m_Name: Iluminacion
   m_EditorClassIdentifier: 
-  nameProducto: Mejorar iluminacion
-  costProducto: 800
+  nameProducto: Mejorar Seguridad
+  costProducto: 150

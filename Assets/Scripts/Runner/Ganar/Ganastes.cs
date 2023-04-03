@@ -11,10 +11,10 @@ public class Ganastes : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
+            GameManager.instanceGameManager.ganaste = true;
             gameObject.GetComponent<ScrollGanar>().notMove = true;
             canvasGanador.SetActive(true);
             UIManager.instanceRunnerManager.AddPoint(RunnerManager.instanceRunnerManager.pointPlayer);
-            infoPlayer.yaGanastesRunner = true;
         }
         else
         {

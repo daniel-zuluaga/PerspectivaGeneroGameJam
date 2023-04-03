@@ -12,12 +12,15 @@ public class UIGuarderiaManager : MonoBehaviour
     public SpriteRenderer imageBG;
     public Sprite spriteFinalizadoGuarderia;
 
+    public AudioSource audioSourceGameOver;
+    public AudioSource audioSourceBG;
+
     private void Start()
     {
         gameOver.SetActive(false);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (MovePlayer.instanceMovePlayer.ganas || MovePlayer.instanceMovePlayer.pierdes || MovePlayer.instanceMovePlayer.notMovePlayerGuarderia)
         {
@@ -32,7 +35,7 @@ public class UIGuarderiaManager : MonoBehaviour
                 ActiveGameOver();
             }
 
-            if (GuarderiaManager.instanceGuarderiaManager.pointsGuarderia == 20)
+            if (GuarderiaManager.instanceGuarderiaManager.pointsGuarderia >= 20)
             {
                 ActiveGanarCanvas();
             }
@@ -64,6 +67,8 @@ public class UIGuarderiaManager : MonoBehaviour
 
     public void ActiveGameOver()
     {
+        audioSourceGameOver.Play();
+        audioSourceBG.Stop();
         MovePlayer.instanceMovePlayer.gameObject.SetActive(false);
         MovePlayer.instanceMovePlayer.pierdes = true;
         GuarderiaManager.instanceGuarderiaManager.textGuarderia.gameObject.SetActive(false);
@@ -76,6 +81,12 @@ public class UIGuarderiaManager : MonoBehaviour
         imageBG.color = Color.white;
         MovePlayer.instanceMovePlayer.ganas = true;
         GuarderiaManager.instanceGuarderiaManager.textGuarderia.gameObject.SetActive(false);
+        StartCoroutine(WaitActiveGanar());
+    }
+
+    IEnumerator WaitActiveGanar()
+    {
+        yield return new WaitForSeconds(1.5f);
         ganasCanvas.SetActive(true);
     }
 }

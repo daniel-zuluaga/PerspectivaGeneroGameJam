@@ -32,4 +32,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ScenesDialogos/CarpinchoChicaScene.unity
     guid: 00122f54fda1e4a279dafa8917160498
+  - enabled: 1
+    path: Assets/Scenes/ScenesDialogos/GuarderiaDialogo.unity
+    guid: 674ebf083ea404075a02483f25241e17
+  - enabled: 1
+    path: Assets/Scenes/ScenesDialogos/PlazaOscuraDialogo.unity
+    guid: 86a9450443b624117ab918cdbb709287
   m_configObjects: {}
